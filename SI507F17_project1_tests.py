@@ -20,13 +20,11 @@ class test_Cards_variables(unittest.TestCase):
 	def test_3(self):
 		z = Card()
 		self.assertEqual(type(z.faces), type({}), "testing type of key-value pairs")
-	# def test_4(self):
-	# 	c = Card(0,12)
-	# 	n = c._str_(11)
-	# 	r = n.faces
-	# 	self.assertTrue(type(r), type({}), "testing certain key pairs with string")
-
-class test_Deck
 	def test_4(self):
+		c = Card(1,"Ace")
+		self.assertEqual(c.faces, (1) "testing certain key pairs with string")
+
+# class test_Deck
+	# def test_4(self):
 		
 unittest.main(verbosity=2)
