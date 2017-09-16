@@ -1,5 +1,6 @@
 ## Do not change import statements.
 import unittest
+from helper_functions import *
 from SI507F17_project1_cards import *
 
 ## Write your unit tests to test the cards code here.
@@ -21,10 +22,69 @@ class test_Cards_variables(unittest.TestCase):
 		z = Card(3,12)
 		self.assertEqual(type(z.faces), type({}), "testing type of key-value pairs")
 	def test_4(self):
-		card = Card(2,13)
-		self.assertEqual(card.suit, "Hearts", "testing the default value is returning the right list")
+		card = Card(2, 13)
+		self.assertEqual(str(card), "King of Hearts", "testing if it returns the right output ")
+	def test_5(self):
+		card = Card(1,5)
+		self.assertEqual(type(card.rank), int, "testing if it returns integer")
 
-# class test_Deck
-	# def test_4(self):
+class test_Deck(unittest.TestCase):
+	def test_6(self): # got help from the discussion session
+		self.deck = Deck()
+		for card_object in self.deck.cards:
+			self.assertIsInstance(card_object, Card, "testing self.cards has instances of Card class")
+	def test_7(self): # got help from the discussion session
+		self.deck = Deck()
+		d_string = str(self.deck)
+		d_list = d_string.split('\n')
+		len(d_list) == 52
+		self.assertEqual(len(d_list), 52, "testing if it prints 52 lines")
+	def test_8(self): 
+		self.deck = Deck()
+		self.assertEqual(type(self.deck.cards), type([]), "testing if the instances holds type of list")
+	def test_9(self): # got help from the discussion session
+		self.deck = Deck()
+		for each_card in range(0,52):
+			self.deck.pop_card()
+		self.assertEqual(len(self.deck.cards), 0, "testing if the length of the cards that pop")
+	def test_10(self): # gives you random decks
+		self.deck = Deck()
+		first = Deck()
+		second = Deck()
+		self.assertFalse(first.cards == second.cards, "testing if the two decks are different")
+	# def test_14(self):
+
+
+class test_Play_war_game(unittest.TestCase):
+ 	
+ 	def test_11(self):
+ 		war = play_war_game(testing=True)
+ 		self.assertEqual(type(war), tuple, "testing if output returns tuple")
+ 	def test_12(self):
+ 		war = play_war_game(testing=True)
+ 		self.assertEqual(type(war[0]), str, "testing if war[0] is a string")
+ 	def test_13(self):
+ 		war = play_war_game(testing=True)
+ 		self.assertEqual(type(war[1]), int, "testing if war[1] is a int")	
+
+
+class test_Show_Song(unittest.TestCase):
+	def test_14(self):
+		any_song = show_song()
+		self.assertIsInstance(any_song, Song, "testing if any_song is instance of class Song")
+	def test_15(self):
+		this_song = show_song("Lucky")
+		self.assertTrue("Lucky" in str(this_song), "testing if lucky comes out in the search term")
+
 		
+
+
+
+
+
+
+
+
+
+
 unittest.main(verbosity=2)
