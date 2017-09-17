@@ -52,27 +52,46 @@ class test_Deck(unittest.TestCase):
 		first = Deck()
 		second = Deck()
 		self.assertFalse(first.cards == second.cards, "testing if the two decks are different")
-	# def test_14(self):
-
+	def test_11(self):
+		sort_decks = Deck()
+		shuffle_decks = Deck()
+		shuffle_decks.shuffle()
+		shuffle_decks.sort_cards()
+		# print (shuffle_decks)
+		self.assertTrue(str(sort_decks) == (str(shuffle_decks)), "testing if shuffle_decks are being being sorted ")
+	def test_12(self):
+		self.deck = Deck()
+		for i in range(0,52):
+			self.deck.pop_card()
+		self.assertEqual(len(self.deck.cards), 0, "testing if the card pops out")
+	def test_13(self):
+		self.deck = Deck()
+		replace_the_card = self.deck.pop_card()
+		self.deck.replace_card(replace_the_card)
+		self.assertTrue(replace_the_card in self.deck.cards, "testing if card has been replace")
+	def test_14(self):
+		self.deck = Deck()
+		one_hand = self.deck.deal_hand(52)
+		self.assertTrue(len(one_hand) == 52, "testing if hand has 52 cards")
 
 class test_Play_war_game(unittest.TestCase):
  	
- 	def test_11(self):
+ 	def test_15(self):
  		war = play_war_game(testing=True)
  		self.assertEqual(type(war), tuple, "testing if output returns tuple")
- 	def test_12(self):
+ 	def test_16(self):
  		war = play_war_game(testing=True)
  		self.assertEqual(type(war[0]), str, "testing if war[0] is a string")
- 	def test_13(self):
+ 	def test_17(self):
  		war = play_war_game(testing=True)
  		self.assertEqual(type(war[1]), int, "testing if war[1] is a int")	
 
 
 class test_Show_Song(unittest.TestCase):
-	def test_14(self):
+	def test_18(self):
 		any_song = show_song()
 		self.assertIsInstance(any_song, Song, "testing if any_song is instance of class Song")
-	def test_15(self):
+	def test_19(self):
 		this_song = show_song("Lucky")
 		self.assertTrue("Lucky" in str(this_song), "testing if lucky comes out in the search term")
 
