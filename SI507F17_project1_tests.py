@@ -98,12 +98,4 @@ class test_Show_Song(unittest.TestCase):
 		
 
 
-
-
-
-
-
-
-
-
 unittest.main(verbosity=2)
